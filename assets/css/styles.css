@@ -124,23 +124,42 @@ p { margin: 0 0 1.1em; }
 .btn--outline:hover { background: var(--lagoon); color: #fff; }
 
 /* ----------------------------- Nav ------------------------------ */
+/* Floating "liquid glass" nav bar — always frosted so it reads on any background */
 .site-header {
   position: fixed;
-  inset: 0 0 auto 0;
+  top: 0.85rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 60;
-  transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
-  padding: 0.65rem 0;
+  width: min(var(--maxw), calc(100% - 1.6rem));
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.42);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 12px 36px -16px rgba(12, 39, 51, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.12);
+  transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease),
+    top 0.4s var(--ease), border-color 0.4s var(--ease);
 }
 .site-header.is-scrolled {
-  background: rgba(255, 253, 249, 0.92);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px -12px rgba(12, 39, 51, 0.55);
+  top: 0.6rem;
+  background: rgba(255, 255, 255, 0.66);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 14px 32px -14px rgba(12, 39, 51, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  max-width: none;
+  margin: 0;
+  padding: 0.42rem 0.5rem 0.42rem 1.2rem;
 }
 .brand {
   display: flex;
@@ -150,7 +169,7 @@ p { margin: 0 0 1.1em; }
   font-weight: 700;
   font-size: 1.15rem;
   letter-spacing: 0.02em;
-  color: #fff;
+  color: var(--ink);
   transition: color 0.4s ease;
 }
 .brand .mark {
@@ -187,7 +206,7 @@ p { margin: 0 0 1.1em; }
   font-size: 0.82rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.92);
+  color: var(--ink);
   position: relative;
   padding-bottom: 3px;
   transition: color 0.3s ease;
@@ -203,7 +222,7 @@ p { margin: 0 0 1.1em; }
 .nav-links a.active::after { width: 100%; }
 .is-scrolled .nav-links a,
 .inner-page .nav-links a { color: var(--ink); }
-.nav-links a.active { color: var(--sand); }
+.nav-links a.active { color: var(--lagoon); }
 
 .nav-cta { display: flex; align-items: center; gap: 1rem; }
 
@@ -214,7 +233,7 @@ p { margin: 0 0 1.1em; }
 }
 .nav-toggle span {
   position: absolute; left: 0; height: 2px; width: 100%;
-  background: #fff; border-radius: 2px; transition: 0.3s var(--ease);
+  background: var(--ink); border-radius: 2px; transition: 0.3s var(--ease);
 }
 .is-scrolled .nav-toggle span,
 .inner-page .nav-toggle span { background: var(--ink); }
